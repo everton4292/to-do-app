@@ -2,10 +2,12 @@
 <resources>
     <color name="accenturePrimaryColor">#6200EE</color>
     <color name="accenturePrimaryDarkColor">#3700B3</color>
-    <color name="colorAccent">#8484EB</color>
+    <color name="colorAccent">#8116A7</color>
     <color name="white">#FFF</color>
-    <color name="black">#BE000000</color>
+    <color name="black">#6200EE</color>
     <color name="light_purple">#EEE9F2</color>
     <color name="grey">#FBE9FB</color>
+    <color name="prim_purple">#F7EBF7</color>
+
 
 </resources>

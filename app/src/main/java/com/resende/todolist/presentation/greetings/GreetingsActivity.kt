@@ -74,8 +74,8 @@ class GreetingsActivity : AppCompatActivity() {
         super.onResume()
 
         val uri: Uri? = intent.data
-        val clientId = BuildConfig.ClientId
-        val clientSecret = BuildConfig.ClientSecret
+        val clientId = "{insira seu clientId}"
+        val clientSecret = "{insira seu clientSecret}"
 
         if (uri != null) {
             val code = uri.getQueryParameter("code")

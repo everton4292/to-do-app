@@ -15,5 +15,5 @@
     <string name="edit_item_field_name">Novo Nome</string>
     <string name="edit_item_field_description">Nova Descrição</string>
     <string name="delete_item_string">Deletar</string>
-    <string name="todo_title">To Do App</string>
+    <string name="todo_title">To Do List</string>
 </resources>

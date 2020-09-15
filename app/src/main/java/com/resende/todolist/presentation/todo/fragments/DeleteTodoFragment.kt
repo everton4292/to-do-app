@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.todo_delete_item_dialog_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class DeleteTodoFragment: DialogFragment() {
+class DeleteTodoFragment : DialogFragment() {
 
     private val todoAdapter: TodoAdapter by inject()
     private val viewModel: TodoViewModel by sharedViewModel()
@@ -25,17 +25,21 @@ class DeleteTodoFragment: DialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.todoList.observe(this, Observer {
-            if(it != null) updateTodoList(it)
+            if (it != null) updateTodoList(it)
         })
 
-        todo_form_delete_button.setOnClickListener{
-            if(validateFields()) {
+        todo_form_delete_button.setOnClickListener {
+            if (validateFields() && isValidId(todo_delete_id_field.text.toString())) {
                 val todoId = todo_delete_id_field.text.toString().toLong()
-                viewModel.deleteTodo(todoId)
-                dismiss()
+                    viewModel.deleteTodo(todoId)
+                    dismiss()
+                }else{
+                    todo_delete_id_field.error = "Insira o número da atividade a ser deletada"
+                    todo_delete_id_field.requestFocus()
+                }
             }
         }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -49,11 +53,21 @@ class DeleteTodoFragment: DialogFragment() {
     }
 
     private fun validateFields(): Boolean {
-        if (todo_delete_id_field.text!!.isEmpty()) {
+        if (todo_delete_id_field.text!!.isEmpty())  {
             todo_delete_id_field.error = "Insira o número da atividade a ser deletada"
             todo_delete_id_field.requestFocus()
             return false
         }
+
         return true
+    }
+
+    fun isValidId(str: String): Boolean {
+        return try {
+            str.toDouble()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 }

@@ -30,10 +30,11 @@ class EditTodoFragment : DialogFragment() {
         viewModel.todoList.observe(this, Observer {
             if (it != null) updateTodoList(it)
         })
+        todo_edit_todo_name.setText(extra?.getString("edit_todo_name"))
+        todo_edit_todo_description.setText(extra?.getString("edit_todo_description"))
 
         todo_form_edit_button.setOnClickListener {
             if(validateFields()) {
-                //todo_edit_todo_name.text = extra?
                 val nameEdit = todo_edit_todo_name.text.toString()
                 val descriptionEdit = todo_edit_todo_description.text.toString()
                 val id = extra?.getInt("edit_todo_id")

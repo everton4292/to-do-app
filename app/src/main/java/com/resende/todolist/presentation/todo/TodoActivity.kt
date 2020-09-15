@@ -1,7 +1,9 @@
 package com.resende.todolist.presentation.todo
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.resende.todolist.R
@@ -29,13 +31,17 @@ class TodoActivity : AppCompatActivity() {
         setupObservers()
 
         todoAdapter.setOnClickTodoListener {
-            val bundleEditTodo: Bundle = Bundle().apply { putInt("edit_todo_id", it.id) }
+            val bundleEditTodo: Bundle = bundleOf(
+                Pair("edit_todo_id", it.id),
+                Pair("edit_todo_name", it.title),
+                Pair("edit_todo_description", it.description)
+            )
             val editTodoFragment = EditTodoFragment()
             editTodoFragment.arguments = bundleEditTodo
             editTodoFragment.show(supportFragmentManager, "editTodoFragment")
         }
 
-        removeButton.setOnClickListener{
+        removeButton.setOnClickListener {
             val deleteItemFragment = DeleteTodoFragment()
             deleteItemFragment.show(supportFragmentManager, "deleteTodoFragment")
         }
@@ -50,8 +56,12 @@ class TodoActivity : AppCompatActivity() {
         viewModel.todoList.observe(this, Observer {
             updateTodoList(it)
         })
+
         viewModel.errorMessage.observe(this, Observer {
-            //todo toast de erro
+            Toast.makeText(
+                this, "Erro ao atualizar valores",
+                Toast.LENGTH_LONG
+            ).show()
         })
 
     }

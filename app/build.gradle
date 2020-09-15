@@ -31,10 +31,7 @@ android {
 
     buildTypes {
         debug{
-            buildConfigField 'String', "ClientId", MY_CLIENT_ID
-            buildConfigField 'String', "ClientSecret", MY_CLIENT_SECRET
-            buildConfigField 'String', "API_PRIVATE", API_PRIVATE
-            buildConfigField 'String', "API_PUBLIC", API_PUBLIC
+
             buildConfigField 'String', "BASE_URL", BASE_URL
         }
 

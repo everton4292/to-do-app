@@ -23,9 +23,17 @@ class GreetingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_greetings)
 
+        if (!isTaskRoot && intent.hasCategory(Intent.CATEGORY_LAUNCHER)
+            && intent.action != null
+            && intent.action.equals(Intent.ACTION_MAIN)
+        ) {
+            finish()
+            return
+        }
+
         val githubLogin = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse("https://github.com/login/oauth/authorize?client_id=509686cc79c90a744dea&scope=repo%20gist")
+            Intent.ACTION_VIEW, //insira abaixo o "client_id=" e o "scope=" após o "authorize?"
+            Uri.parse("https://github.com/login/oauth/authorize?{seu client_id} e o {scope} aqui")
         )
         greetings_button.setOnClickListener { startActivity(githubLogin) }
 
@@ -36,6 +44,7 @@ class GreetingsActivity : AppCompatActivity() {
         viewModel.tokenAccess.observe(this, Observer { accessToken ->
             if (accessToken != null) {
                 successToken(accessToken.accessToken)
+                println(accessToken)
             } else {
                 errorToken()
             }
@@ -74,8 +83,10 @@ class GreetingsActivity : AppCompatActivity() {
         super.onResume()
 
         val uri: Uri? = intent.data
-        val clientId = "{insira seu clientId}"
-        val clientSecret = "{insira seu clientSecret}"
+        //clientId e clientSecret recuperados do Oauth App do Github para realização do processo
+        //insira o seu aqui
+        val clientId = "{seu clientId}"
+        val clientSecret = "{seu clientSecret}"
 
         if (uri != null) {
             val code = uri.getQueryParameter("code")

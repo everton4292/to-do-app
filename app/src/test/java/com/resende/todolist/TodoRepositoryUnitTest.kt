@@ -1,7 +1,6 @@
 package com.resende.todolist
 
 
-import com.resende.todolist.data.model.AccessTokenResponse
 import com.resende.todolist.data.model.Todo
 import com.resende.todolist.data.repository.TodoRepositoryImp
 import com.resende.todolist.domain.repository.TodoRepository
@@ -15,25 +14,25 @@ import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 
 
-class TodoRepositoryTest {
+class TodoRepositoryUnitTest {
 
     @Mock
     var repository: TodoRepository = Mockito.mock(TodoRepositoryImp::class.java)
     @Mock
-    val todoTest1 = Todo(id = 5, title = "Comer", description = "Almoçar às 12:00")
+    val todoMock1 = Todo(id = 5, title = "Comer", description = "Almoçar às 12:00")
     @Mock
-    val todoTest2 = Todo(id = 7, title = "jantar", description = "Jantar às 18:00")
+    val todoMock2 = Todo(id = 7, title = "jantar", description = "Jantar às 18:00")
     @Mock
     val todoTestFail1 = Todo(id = 1, title = "", description = "Correr às 19:00")
     @Mock
-    val todoList: Flow<MutableList<Todo>> = flowOf(mutableListOf<Todo>(todoTest1, todoTest2))
+    val todoList: Flow<MutableList<Todo>> = flowOf(mutableListOf<Todo>(todoMock1, todoMock2))
 
 
     @Test
     fun `Success save todo when all fields are valid`(){
         runBlocking {
-            `when`(repository.saveTodo(todoTest1)).thenReturn(0)
-            assertEquals(0, repository.saveTodo(todoTest1))
+            `when`(repository.saveTodo(todoMock1)).thenReturn(0)
+            assertEquals(0, repository.saveTodo(todoMock1))
         }
     }
 
@@ -48,16 +47,16 @@ class TodoRepositoryTest {
     @Test
     fun `Success delete todo`(){
         runBlocking {
-            `when`(repository.deleteTodo(todoTest2.id.toString().toLong())).thenReturn(Unit)
-            assertEquals(Unit, repository.deleteTodo(todoTest2.id.toString().toLong()))
+            `when`(repository.deleteTodo(todoMock2.id.toString().toLong())).thenReturn(Unit)
+            assertEquals(Unit, repository.deleteTodo(todoMock2.id.toString().toLong()))
         }
     }
 
     @Test
     fun `Success update todo`(){
         runBlocking {
-            `when`(repository.updateTodo(todoTest1)).thenReturn(Unit)
-            assertEquals(Unit, repository.updateTodo(todoTest2))
+            `when`(repository.updateTodo(todoMock1)).thenReturn(Unit)
+            assertEquals(Unit, repository.updateTodo(todoMock2))
         }
     }
 

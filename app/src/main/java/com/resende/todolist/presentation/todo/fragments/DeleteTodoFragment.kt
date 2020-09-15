@@ -29,16 +29,13 @@ class DeleteTodoFragment : DialogFragment() {
         })
 
         todo_form_delete_button.setOnClickListener {
-            if (validateFields() && isValidId(todo_delete_id_field.text.toString())) {
+            if (validateFields()) {
                 val todoId = todo_delete_id_field.text.toString().toLong()
-                    viewModel.deleteTodo(todoId)
-                    dismiss()
-                }else{
-                    todo_delete_id_field.error = "Insira o número da atividade a ser deletada"
-                    todo_delete_id_field.requestFocus()
-                }
+                viewModel.deleteTodo(todoId)
+                dismiss()
             }
         }
+    }
 
 
     override fun onCreateView(
@@ -53,21 +50,12 @@ class DeleteTodoFragment : DialogFragment() {
     }
 
     private fun validateFields(): Boolean {
-        if (todo_delete_id_field.text!!.isEmpty())  {
+        if (todo_delete_id_field.text!!.isEmpty()) {
             todo_delete_id_field.error = "Insira o número da atividade a ser deletada"
             todo_delete_id_field.requestFocus()
             return false
         }
 
         return true
-    }
-
-    fun isValidId(str: String): Boolean {
-        return try {
-            str.toDouble()
-            true
-        } catch (e: NumberFormatException) {
-            false
-        }
     }
 }

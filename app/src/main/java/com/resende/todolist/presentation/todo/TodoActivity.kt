@@ -1,5 +1,6 @@
 package com.resende.todolist.presentation.todo
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -52,6 +53,7 @@ class TodoActivity : AppCompatActivity() {
         }
     }
 
+    
     private fun setupObservers() {
         viewModel.todoList.observe(this, Observer {
             updateTodoList(it)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accenturePrimaryColor">#6200EE</color>
+    <color name="accenturePrimaryDarkColor">#3700B3</color>
+    <color name="colorAccent">#8484EB</color>
+    <color name="white">#FFF</color>
+    <color name="black">#BE000000</color>
+    <color name="light_purple">#EEE9F2</color>
+    <color name="grey">#FBE9FB</color>
+
+</resources>

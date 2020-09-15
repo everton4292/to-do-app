@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name_string">ToDoList</string>
+    <string name="greetings_text_string">Olá, sou o candidato <b>Everton</b>, e esse é o meu teste</string>
+    <string name="greetings_button_text_string">Vamos lá</string>
+    <string name="github_repository_link_string">https://github.com/everton4292/todo-app</string>
+    <string name="repositorio_string">Repositório</string>
+    <string name="ok_alert_string">OK</string>
+    <string name="salvar_button_string">Salvar</string>
+    <string name="salvar_edic_button_string">Salvar alterações</string>
+    <string name="insert_name_error_string">Favor inserir nome da atividade</string>
+    <string name="insert_description_error_string">Favor inserir descrição da atividade</string>
+    <string name="todo_to_be_deleted_id">Número da atividade a ser apagada</string>
+    <string name="new_item_field_description">Descrição</string>
+    <string name="new_item_field_name">Nome</string>
+    <string name="edit_item_field_name">Novo Nome</string>
+    <string name="edit_item_field_description">Nova Descrição</string>
+    <string name="delete_item_string">Deletar</string>
+    <string name="todo_title">To Do App</string>
+</resources>

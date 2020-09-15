@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    defaultConfig {
+        applicationId "com.resende.todolist"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField 'String', "ClientId", MY_CLIENT_ID
+            buildConfigField 'String', "ClientSecret", MY_CLIENT_SECRET
+            buildConfigField 'String', "API_PRIVATE", API_PRIVATE
+            buildConfigField 'String', "API_PUBLIC", API_PUBLIC
+            buildConfigField 'String', "BASE_URL", BASE_URL
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
+    buildscript {
+        ext.kotlin_version = '1.4.0'
+    }
+
+}
+
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    //Lifecycle - ViewModel, LiveData
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-service:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
+
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc02"
+
+    //Network - Coroutines, Retrofit, OkHttp
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.4'
+    implementation "com.squareup.retrofit2:converter-gson:2.6.4"
+
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation 'androidx.fragment:fragment:1.2.5'
+
+    //Koin
+    implementation "org.koin:koin-core:2.1.6"
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-androidx-scope:2.2.0-alpha-1"
+    implementation "org.koin:koin-android-viewmodel:2.2.0-alpha-1"
+    implementation "org.koin:koin-android-architecture:0.9.1-alpha-5"
+    implementation "org.koin:koin-androidx-fragment:2.2.0-alpha-1"
+
+    //Room
+    implementation "androidx.room:room-ktx:2.2.5"
+    implementation "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+
+
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+
+    //Material Design
+    api 'com.google.android.material:material:1.3.0-alpha02'
+
+    //Tests
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'org.mockito:mockito-core:3.3.3'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+
+    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

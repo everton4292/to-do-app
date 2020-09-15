@@ -2,6 +2,17 @@
 
 ## Instruções de uso
 
+* Criando o ambiente de teste do projeto
+
+Para fazer o app funcionar, será necessário criar um app no Oauth do Github, com as instruções disponíveis [aqui](https://docs.github.com/en/developers/apps/creating-an-oauth-app).
+
+Em seguide, copie o ClientID e o ClientSecret para utilizá-los no processo. Copie também o "Authorization callback URL" especificado por você na criação do app ouath.
+
+Esses dados serão necessários para a realização da configuração do Oauth. Dentro do projeto, na "GreetingsActivity", observe o comentário com instruções para aplicação do ClientId(linhas 35 e 85). 
+
+No AndroidManifest, no intent-filter relacionado à "GreetingsActivity", na seção "data", insira o host e o callback referente ao seu app. Por exemplo, uma url neste formato "meuapp://callback" tem como scheme: "meuapp", e como host:"callback", campos presentes na seção "data" do intent-filter.
+
+
 * Tela de Greetings 
 
 O app inicia-se com uma tela de boas vindas, apresentando um botão e um link para o repositório do projeto. Acionar o botão leva ao processo de Oauth utilizando o login e a senha do Github num dos browsers disponíveis no seu telefone. Após a realização do login, o app apresenta na tela um dialog com o seu token obtido através do Oauth. Pressionar em algum lugar fora do dialog ou no botão de OK levará o usuário para a tela principal do app.
@@ -31,7 +42,7 @@ Foram usados:
 1. Github Oauth Token Authorization
 1. Retrofit
 
-## Características do código
+## Apresenta
 
 * Coroutines integradas com o Room para chamadas assíncronas ao banco de dados
 * Injeção de dependência usando o Koin

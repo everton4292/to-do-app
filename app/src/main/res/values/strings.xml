@@ -2,7 +2,7 @@
     <string name="app_name_string">ToDoList</string>
     <string name="greetings_text_string">Olá, sou o candidato <b>Everton</b>, e esse é o meu teste</string>
     <string name="greetings_button_text_string">Vamos lá</string>
-    <string name="github_repository_link_string">https://github.com/everton4292/todo-app</string>
+    <string name="github_repository_link_string">https://github.com/everton4292/to-do-app</string>
     <string name="repositorio_string">Repositório</string>
     <string name="ok_alert_string">OK</string>
     <string name="salvar_button_string">Salvar</string>

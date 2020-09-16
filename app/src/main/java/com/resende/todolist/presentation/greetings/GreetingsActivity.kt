@@ -85,8 +85,8 @@ class GreetingsActivity : AppCompatActivity() {
         val uri: Uri? = intent.data
         //clientId e clientSecret recuperados do Oauth App do Github para realização do processo
         //insira o seu aqui
-        val clientId = "{seu clientId}"
-        val clientSecret = "{seu clientSecret}"
+        val clientId = "{seu clientId, sem as chaves e entre aspas}"
+        val clientSecret = "{seu clientSecret, sem as chaves e entre aspas}"
 
         if (uri != null) {
             val code = uri.getQueryParameter("code")

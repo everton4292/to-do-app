@@ -1,8 +1,15 @@
-# To Do App
+# :white_check_mark: To Do List
 
-## Instruções de uso
+<p align="center"><br>|
+  <a href="https://github.com/everton4292/to-do-app#to-do-list">:white_check_mark:To Do List</a>  | 
+  <a href="https://github.com/everton4292/to-do-app#instruções-de-uso">:id:Instruções de uso</a>  | 
+  <a href="https://github.com/everton4292/to-do-app#imagens">:camera:Imagens</a>  | 
+  <br><br>
+ </p>
 
-* Criando o ambiente de teste do projeto
+## :id: Instruções de uso
+
+### Criando o Github Oauth App, o ClientId e o ClientSecret para o projeto
 
 Para fazer o app funcionar, será necessário criar um app no Oauth do Github, com as instruções disponíveis [aqui](https://docs.github.com/en/developers/apps/creating-an-oauth-app).
 
@@ -12,12 +19,13 @@ Esses dados serão necessários para a realização da configuração do Oauth. 
 
 No AndroidManifest, no intent-filter relacionado à "GreetingsActivity", na seção "data", insira o host e o callback referente ao seu app. Por exemplo, uma url neste formato "meuapp://callback" tem como scheme: "meuapp", e como host:"callback", campos presentes na seção "data" do intent-filter.
 
+## :iphone: A Aplicação
 
-* Tela de Greetings 
+### Tela de Greetings 
 
 O app inicia-se com uma tela de boas vindas, apresentando um botão e um link para o repositório do projeto. Acionar o botão leva ao processo de Oauth utilizando o login e a senha do Github num dos browsers disponíveis no seu telefone. Após a realização do login, o app apresenta na tela um dialog com o seu token obtido através do Oauth. Pressionar em algum lugar fora do dialog ou no botão de OK levará o usuário para a tela principal do app.
 
-* To Do List
+### To Do List
 
 Na tela principal do app encontra-se uma lista e dois botões. A lista representa as atividades inseridas no banco de dados local do celular, caso não hajam atividades cadastradas, a lista estará em branco. Atividades listadas apresentam-se na forma de um "cartão" onde constam título, descrição e o número da atividade.
 
@@ -42,13 +50,26 @@ Foram usados:
 1. Github Oauth Token Authorization
 1. Retrofit
 
-## Apresenta
+### O app possui
 
 * Coroutines integradas com o Room para chamadas assíncronas ao banco de dados
 * Injeção de dependência usando o Koin
 * Tests unitários para chamadas ao banco de dados
+* Arquitetura View Model e separação de responsabilidades
+* Design fluído com base nas orientações do Material Design do Google
+* Validação nos inputs do usuário para evitar crashs
 
-## Imagens
+### Próximos passos
+
+* Maior abrangência de testes unitários
+* Melhorias na arquitetura
+* Outras formas de login Oauth
+* Revogação de token para logout
+* Armazenamento do token para evitar re-login constante
+* Melhorias na estabilidade e na proteção contra crashs e exceptions
+
+
+## :camera: Imagens
 
 ![Mainr](https://i.imgur.com/q84ClxH.png)  ![Mainr2](https://i.imgur.com/FertoIE.png)
 

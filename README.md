@@ -2,8 +2,8 @@
 
 <p align="center"><br>|
   <a href="https://github.com/everton4292/to-do-app#to-do-list">:white_check_mark:To Do List</a>  | 
-  <a href="https://github.com/everton4292/to-do-app#instruções-de-uso">:id:Instruções de uso</a>  | 
-  <a href="https://github.com/everton4292/to-do-app#imagens">:camera:Imagens</a>  | 
+  <a href="https://github.com/everton4292/to-do-app#id-instruções-de-uso">:id:Instruções de uso</a>  | 
+  <a href="https://github.com/everton4292/to-do-app#camera-imagens">:camera:Imagens</a>  | 
   <br><br>
  </p>
 

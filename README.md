@@ -40,15 +40,15 @@ Os dados salvos permanecerão na lista até que o usuário os delete ou apague o
 Criado usando [Kotlin](https://kotlinlang.org) e [Android Studio](https://www.google.com.br/search?client=opera&q=android+studio&sourceid=opera&ie=UTF-8&oe=UTF-8)
 
 Foram usados:
-1. Coroutines
-1. Clean Architecture
-1. Room
-1. Koin
-1. MVVM Architecture
-1. Mockito
-1. Android Material Design
-1. Github Oauth Token Authorization
-1. Retrofit
+1. [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+1. [Clean Architecture](https://pusher.com/tutorials/clean-architecture-introduction)
+1. [Room](https://developer.android.com/topic/libraries/architecture/room)
+1. [Koin](https://insert-koin.io)
+1. [MVVM Architecture](https://developer.android.com/topic/libraries/architecture/viewmodel)
+1. [Mockito](https://site.mockito.org)
+1. [Android Material Design](https://developer.android.com/guide/topics/ui/look-and-feel?hl=pt)
+1. [Github Oauth Token Authorization](https://docs.github.com/en/developers/apps/building-oauth-apps)
+1. [Retrofit](https://square.github.io/retrofit/)
 
 ### O app possui
 

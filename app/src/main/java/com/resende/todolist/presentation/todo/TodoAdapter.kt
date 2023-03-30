@@ -2,27 +2,24 @@ package com.resende.todolist.presentation.todo
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.resende.todolist.R
 import com.resende.todolist.data.model.Todo
-import kotlinx.android.synthetic.main.todo_item.view.*
+import com.resende.todolist.databinding.TodoItemBinding
 
 class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
-
 
     private val todosList: MutableList<Todo> = mutableListOf()
     lateinit var clickTodoListener: OnLongClickTodoListener
 
-    inner class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TodoViewHolder(private val binding: TodoItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(todo: Todo) {
-            itemView.todo_item_name.text = todo.title
-            itemView.todo_item_description.text = todo.description
-            itemView.todo_item_ID.text = todo.id.toString()
+            binding.todoItemName.text = todo.title
+            binding.todoItemDescription.text = todo.description
+            binding.todoItemID.text = todo.id.toString()
 
-            itemView.setOnLongClickListener {
+            binding.root.setOnLongClickListener {
                 clickTodoListener.onClick(todo)
                 true
             }
@@ -37,9 +34,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
 
-        val cellForRow =
-            LayoutInflater.from(parent.context).inflate(R.layout.todo_item, parent, false)
-        return TodoViewHolder(cellForRow)
+        val binding = TodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TodoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {

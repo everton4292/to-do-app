@@ -1,6 +1,5 @@
 package com.resende.todolist.presentation.todo
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,22 +8,24 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.resende.todolist.R
 import com.resende.todolist.data.model.Todo
+import com.resende.todolist.databinding.ActivityTodoBinding
 import com.resende.todolist.presentation.todo.fragments.AddTodoFragment
 import com.resende.todolist.presentation.todo.fragments.DeleteTodoFragment
 import com.resende.todolist.presentation.todo.fragments.EditTodoFragment
-import kotlinx.android.synthetic.main.activity_todo.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TodoActivity : AppCompatActivity() {
 
     private val todoAdapter: TodoAdapter by inject()
     private val viewModel: TodoViewModel by viewModel()
+    private lateinit var binding: ActivityTodoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_todo)
+        binding = ActivityTodoBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         supportActionBar?.title = getString(R.string.todo_title)
         loadRecyclerView()
 
@@ -42,35 +43,38 @@ class TodoActivity : AppCompatActivity() {
             editTodoFragment.show(supportFragmentManager, "editTodoFragment")
         }
 
-        removeButton.setOnClickListener {
-            val deleteItemFragment = DeleteTodoFragment()
-            deleteItemFragment.show(supportFragmentManager, "deleteTodoFragment")
-        }
+        binding.apply {
+            removeButton.setOnClickListener {
+                val deleteItemFragment = DeleteTodoFragment()
+                deleteItemFragment.show(supportFragmentManager, "deleteTodoFragment")
+            }
 
-        plusAccButton.setOnClickListener {
-            val addTodoFragment = AddTodoFragment()
-            addTodoFragment.show(supportFragmentManager, "AddTodoFragment")
+            plusAccButton.setOnClickListener {
+                val addTodoFragment = AddTodoFragment()
+                addTodoFragment.show(supportFragmentManager, "AddTodoFragment")
+            }
         }
     }
 
     
     private fun setupObservers() {
-        viewModel.todoList.observe(this, Observer {
-            updateTodoList(it)
-        })
+        viewModel.apply {
+            todoList.observe(this@TodoActivity, Observer {
+                updateTodoList(it)
+            })
 
-        viewModel.errorMessage.observe(this, Observer {
-            Toast.makeText(
-                this, "Erro ao atualizar valores",
-                Toast.LENGTH_LONG
-            ).show()
-        })
-
+            errorMessage.observe(this@TodoActivity, Observer {
+                Toast.makeText(
+                    this@TodoActivity, "Erro ao atualizar valores",
+                    Toast.LENGTH_LONG
+                ).show()
+            })
+        }
     }
 
     private fun loadRecyclerView() {
         val linearLayoutTodo = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerViewTodo.apply {
+        binding.recyclerViewTodo.apply {
             adapter = todoAdapter
             setHasFixedSize(true)
             this.layoutManager = linearLayoutTodo

@@ -8,34 +8,27 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.resende.todolist.BuildConfig
 import com.resende.todolist.R
+import com.resende.todolist.databinding.ActivityGreetingsBinding
 import com.resende.todolist.presentation.todo.TodoActivity
-import kotlinx.android.synthetic.main.activity_greetings.*
-import org.koin.android.viewmodel.ext.android.viewModel
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GreetingsActivity : AppCompatActivity() {
 
     private val viewModel: GreetingsViewModel by viewModel()
+    private lateinit var binding: ActivityGreetingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_greetings)
-
-        if (!isTaskRoot && intent.hasCategory(Intent.CATEGORY_LAUNCHER)
-            && intent.action != null
-            && intent.action.equals(Intent.ACTION_MAIN)
-        ) {
-            finish()
-            return
-        }
+        binding = ActivityGreetingsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val githubLogin = Intent(
             Intent.ACTION_VIEW, //insira abaixo o "client_id=" e o "scope=" após o "authorize?"
-            Uri.parse("https://github.com/login/oauth/authorize?{seu client_id} e o {scope} aqui")
+            Uri.parse("https://github.com/login/oauth/authorize?client_id=509686cc79c90a744dea&scope=repo%20gist")
         )
-        greetings_button.setOnClickListener { startActivity(githubLogin) }
+        binding.greetingsButton.setOnClickListener { startActivity(githubLogin) }
 
         setupObservers()
     }
@@ -83,10 +76,8 @@ class GreetingsActivity : AppCompatActivity() {
         super.onResume()
 
         val uri: Uri? = intent.data
-        //clientId e clientSecret recuperados do Oauth App do Github para realização do processo
-        //insira o seu aqui
-        val clientId = "{seu clientId, sem as chaves e entre aspas}"
-        val clientSecret = "{seu clientSecret, sem as chaves e entre aspas}"
+        val clientId = "509686cc79c90a744dea"
+        val clientSecret = "1f5add21a014914ea47ee3b44c41323f26d4ee0e"
 
         if (uri != null) {
             val code = uri.getQueryParameter("code")

@@ -17,6 +17,7 @@
         <activity
             android:name="com.resende.todolist.presentation.greetings.GreetingsActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +35,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.todo.TodoActivity">
+        <activity
+            android:name=".presentation.todo.TodoActivity"
+            android:exported="true">
 
         </activity>
     </application>
